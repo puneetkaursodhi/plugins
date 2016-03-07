@@ -11,6 +11,7 @@ class EmailService {
     MessageSource messageSource
     def groovyPageRenderer
 
+
     void sendMail(EmailDTO emailDTO) {
         mailService.sendMail {
             to emailDTO.to.toArray()
@@ -27,8 +28,12 @@ class EmailService {
         mailService.sendMail {
             to "puneet.kaur@tothenew.com"
             subject "Hello Puneet"
+//            subject messageSource.getMessage('test.email.subject', [].toArray(), Locale.default)
             body 'How are you?'
 //            html '<b>Hello</b> World'
+//            html groovyPageRenderer.render(template: '/util/demo',model:[userName:"Puneet"])
+//            body(view: "/util/_demo",
+//                    model: [userName: "Puneet"])
         }
     }
 }
